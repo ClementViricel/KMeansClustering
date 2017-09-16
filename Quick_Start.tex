@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+
+\title{Quick Start}
+\author{Cl\'ement Viricel}
+
+\begin{document}
+\maketitle
+\section{Input File}
+Let's take a look at the file which the program eat. It has the following format:
+\begin{verbatim}
+Nb_of_point Nb_of_dimension Nb_of_Clusters Nb_of_Iteration HasName
+x1 x2 ... (Name)
+x1 x2 ... (Name)
+x1 x2 ... (Name)
+.
+.
+.
+\end{verbatim}
+For example, if you are trying to run the program for $1000$ iteration over one hundred $\mathbb{R}^3$ coordinates in $4$ clusters the file will look like:
+\begin{verbatim}
+100 3 4 1000 0
+x y z
+x y z
+.
+.
+.
+\end{verbatim}
+It's an easy and common way to represent the data but the parser can be changed if needed (with more work). \\
+Adding a name to the point can allow user to see if there is a pattern with its data. For exemple, one can cluster 1000 measures of any dimension of $N$ different types of any kind and clusterize it into $N$ clusters to see if the measure are strongly correlated to the type.
+\section{Output File}
+The output file produce by the program is as simple as the input file. It will write in ``\textit{Results.txt}'' each cluster with its points and its central value (that correspond to te barycenter of the cluster, aka central value, aka representative value :
+\begin{verbatim}
+Cluster i
+Point p : x1 x2 ... (Name)
+.
+.
+Central point
+\end{verbatim}
+\section{The program}
+To compile the program please enter the following command:
+\begin{verbatim}
+g++ src/*.cpp -o kmeans
+\end{verbatim}
+To run the program, it's really easy, just enter:
+\begin{verbatim}
+./kmeans [input_file]
+\end{verbatim}
+Enjoy !
+\end{document}
